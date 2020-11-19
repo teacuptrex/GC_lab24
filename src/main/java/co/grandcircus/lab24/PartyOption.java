@@ -14,25 +14,15 @@ public class PartyOption {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id=0;
 	private String name;
 	private String description;
 	private int votes;
+	
 	public PartyOption() {
 		
 	}
-	public PartyOption(String name, String description, int votes) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.votes = votes;
-	}
-	public PartyOption(String name, String description) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.votes = 0;
-	}
+
 	public PartyOption(long id, String name, String description, int votes) {
 		super();
 		this.id = id;
@@ -41,6 +31,8 @@ public class PartyOption {
 		this.votes = votes;
 	}
 	public long getId() {
+		System.out.println("THIS");
+		System.out.println(this.id);
 		return id;
 	}
 	public void setId(long id) {

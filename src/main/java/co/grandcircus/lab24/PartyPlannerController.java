@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PartyPlannerController {
@@ -47,16 +48,29 @@ public class PartyPlannerController {
 	
 	@GetMapping("/review")
 	public String review(Model model) {
-		List<PartyOption> partyoptions = rep.findAll();
+		List<PartyOption> partyoptions = rep.findByVotes(0);
 		model.addAttribute("partyoptions",partyoptions);
 		return "review";
 	}
 	
 	@PostMapping("/newpizza")
-	public String newPizza(PartyOption partyoption) {
+	public String newPizza(PartyOption partyoption, Model model) {
+		System.out.println("NEWPIZZA");
+		System.out.println(partyoption);
+		//partyoption.setVotes(0);
 		
-		partyoption.setVotes(0);
+		System.out.println(partyoption.getId());
+		System.out.println("1");
+		
 		rep.save(partyoption);
+		
+		System.out.println("2");
+		model.addAttribute("partyoption",partyoption);
+		System.out.println("3");
+		List<PartyOption> partyoptions = rep.findAll();
+		System.out.println("4");
+		model.addAttribute("partyoptions",partyoptions);
+		System.out.println("5");
 				
 		return "redirect:/vote";
 	}

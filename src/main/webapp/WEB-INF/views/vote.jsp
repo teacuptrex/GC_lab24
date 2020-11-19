@@ -34,9 +34,9 @@
 	
 	<form method="post" action="/newpizza">
 	<h3>Add new Pizza</h3>
-	Name: <input type="text" name="name" />
-	Description: <input type="text" name="description" />
-	<input name="votes" type="number" value="0" min="0" max="0" />
+	Name: <input type="text" name="name" id="name" />
+	Description: <input type="text" name="description" id="description" />
+	
 	<input type="submit">
 	</form>
 
